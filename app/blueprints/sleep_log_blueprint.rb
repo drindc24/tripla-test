@@ -1,7 +1,6 @@
 class SleepLogBlueprint < Blueprinter::Base
   identifier :id
 
-  fields :clock_in
+  fields :clock_in, :user_id
 
-  association :user, blueprint: UserBlueprint
 end

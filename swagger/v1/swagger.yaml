@@ -56,6 +56,22 @@ paths:
                       type: string
                     followed_id:
                       type: string
+  "/api/v1/users/{user_id}/newsfeeds":
+    get:
+      summary: retrieve newsfeed for a user
+      tags:
+      - Newsfeeds
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: newsfeed retrieved
+        '404':
+          description: resource not found
   "/api/v1/users/{user_id}/sleep_logs":
     post:
       summary: create a sleep log for a user

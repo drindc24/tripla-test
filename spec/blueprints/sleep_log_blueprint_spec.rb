@@ -10,9 +10,9 @@ RSpec.describe SleepLogBlueprint do
       )
     end
 
-    it 'contains the correct keys' do
+    it 'contains the correct keys and values' do
       expect(json).to include(
-        user: include(name: log.user.name),
+        user_id: log.user.id,
         clock_in: log.clock_in
       )
     end

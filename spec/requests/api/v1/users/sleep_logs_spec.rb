@@ -38,15 +38,12 @@ RSpec.describe 'sleep logs requests' do
             expect(response).to have_http_status(:ok)
             expect(json_response).to include(
               clock_in: '2022-01-01 22:00:00 UTC',
-              user: include(
-                id: user.id,
-                name: user.name
-              )
+              user_id: user.id
             )
           end
         end
   
-        response '404', 'invalid request' do
+        response '404', 'resource not found' do
           let(:user_id) { 123 }
           let(:sleep_log) do
             {
