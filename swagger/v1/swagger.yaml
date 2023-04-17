@@ -4,6 +4,58 @@ info:
   title: API V1
   version: v1
 paths:
+  "/api/v1/follows/follow":
+    post:
+      summary: follow a user
+      tags:
+      - Follows
+      parameters: []
+      responses:
+        '200':
+          description: follow successful
+        '404':
+          description: resource not found
+        '422':
+          description: 'invalid request: cannot follow yourself'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                follow:
+                  type: object
+                  schema:
+                    follower_id:
+                      type: string
+                    followed_id:
+                      type: string
+  "/api/v1/follows/unfollow":
+    delete:
+      summary: follow a user
+      tags:
+      - Follows
+      parameters: []
+      responses:
+        '204':
+          description: unfollow successful
+        '404':
+          description: resource not found
+        '422':
+          description: 'invalid request: cannot follow yourself'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                follow:
+                  type: object
+                  schema:
+                    follower_id:
+                      type: string
+                    followed_id:
+                      type: string
   "/api/v1/users/{user_id}/sleep_logs":
     post:
       summary: create a sleep log for a user

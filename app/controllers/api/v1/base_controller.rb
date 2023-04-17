@@ -1,6 +1,6 @@
 class Api::V1::BaseController < ActionController::API
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
-  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
+  rescue_from ActiveRecord::RecordInvalid, ActiveRecord::RecordNotDestroyed, with: :render_unprocessable_entity
 
   def render_not_found
     render json: { message: 'Resource not found' }, status: 404

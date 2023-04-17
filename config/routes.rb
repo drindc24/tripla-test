@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :follows, only: [] do
         post :follow, on: :collection
-        post :unfollow, on: :collection
+        delete :unfollow, on: :collection
       end
       resources :users, only: [] do
         resources :sleep_logs, module: :users, only: %i[create]
