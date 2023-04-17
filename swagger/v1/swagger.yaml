@@ -3,9 +3,40 @@ openapi: 3.0.1
 info:
   title: API V1
   version: v1
-paths: {}
+paths:
+  "/api/v1/users/{user_id}/sleep_logs":
+    post:
+      summary: create a sleep log for a user
+      tags:
+      - Sleep Logs
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: sleep log created
+        '404':
+          description: invalid request
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sleep_log:
+                  type: object
+                  schema:
+                    user_id:
+                      type: string
+                    clock_in:
+                      type: string
 servers:
 - url: https://{defaultHost}
   variables:
     defaultHost:
-      default: www.example.com
+      default: localhost:3000
