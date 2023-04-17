@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         delete :unfollow, on: :collection
       end
       resources :users, only: [] do
+        resources :newsfeeds, module: :users, only: %i(index)
         resources :sleep_logs, module: :users, only: %i[create]
       end
     end
