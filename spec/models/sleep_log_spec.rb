@@ -54,4 +54,16 @@ RSpec.describe SleepLog, type: :model do
       end
     end
   end
+
+  describe '#clock_out' do
+    let(:log) { create(:sleep_log, clock_in: '2023-01-01 10:30 PM') }
+
+    before do
+      log.update(clock_out: '2023-01-02 5:35 AM')
+    end
+    
+    it 'calculates sleep duration after update' do
+      expect(log.reload.duration).to eq(7.08)
+    end
+  end
 end
