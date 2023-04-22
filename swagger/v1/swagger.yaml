@@ -87,7 +87,7 @@ paths:
         '200':
           description: sleep log created
         '404':
-          description: invalid request
+          description: resource not found
         '422':
           description: invalid request
       requestBody:
@@ -102,6 +102,40 @@ paths:
                     user_id:
                       type: string
                     clock_in:
+                      type: string
+  "/api/v1/users/{user_id}/sleep_logs/{id}":
+    put:
+      summary: update a sleep log
+      tags:
+      - Sleep logs
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: sleep log created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sleep_log:
+                  type: object
+                  schema:
+                    user_id:
+                      type: string
+                    clock_in:
+                      type: string
+                    clock_out:
                       type: string
 servers:
 - url: https://{defaultHost}

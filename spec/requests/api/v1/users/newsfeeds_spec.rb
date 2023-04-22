@@ -33,7 +33,9 @@ RSpec.describe 'newsfeeds requests' do
                   sleep_logs: contain_exactly(
                     id: log.id,
                     user_id: user2.id,
-                    clock_in: '2022-01-01 22:00:00 UTC'
+                    clock_in: '2022-01-01 22:00:00 UTC',
+                    clock_out: nil,
+                    duration: '0.0'
                   )
                 )
               )

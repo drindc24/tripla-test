@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       end
       resources :users, only: [] do
         resources :newsfeeds, module: :users, only: %i(index)
-        resources :sleep_logs, module: :users, only: %i[create]
+        resources :sleep_logs, module: :users, only: %i[create update]
       end
     end
   end
