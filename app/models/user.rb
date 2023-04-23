@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   has_many :followers, through: :followed_relationships, source: :follower
   has_many :following, through: :follower_relationships, source: :followed
+  has_many :following_sleep_logs, through: :following, class_name: 'SleepLog', source: :sleep_logs
 
   validates :name, presence: true
 end
